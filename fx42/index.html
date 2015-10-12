@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <title>#putafoxonit</title>
+    <link rel="stylesheet" href="fonts/edo_regular_macroman/stylesheet.css">
+    <style>
+      html,body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        background-color: #f9d8b8;
+        background-image: url(rally.png);
+        background-position: center, center;
+        background-repeat: no-repeat, no-repeat;
+        background-size: contain;
+        color: #fff;
+        font-family: edoregular, sans-serif;
+        font-variant-numeric: tabular-nums;
+      }
+      div {
+        font-size: 10vmax;
+        font-weight: normal;
+        color: #5A5A5E;
+        opacity: .99;
+        mix-blend-mode: darken;
+        position: absolute;
+        top: 51vh;
+        left: 7vw;
+        transform: rotate(-2deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      var el = document.querySelector('div');
+      function up() {
+        var diff = (Date.parse('2015-11-02T02:00:00.000Z') - Date.now())/1e3|0;
+        if (diff < 0) {
+          el.innerHTML = 'Now!'
+        } else {
+          var days = diff / (24*60*60) | 0;
+          var hours = (diff / (60*60) | 0) % 24;
+          var minutes = (diff / 60 | 0) % 60;
+          var seconds = diff % 60;
+          el.innerHTML = days + (days > 1 ? ' DAYS' : ' DAY');
+          setTimeout(up,1000);
+        }
+      }
+      up();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <link rel=stylesheet href='http://code.cdn.mozilla.net/fonts/fira.css'>
+    <title>#putafoxonit</title>
+    <style>
+      html,body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        background-image: linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.5)), url(http://bits.potch.me/portland.jpg);
+        background-position: center, center;
+        background-repeat: no-repeat, no-repeat;
+        background-size: cover, cover;
+        line-height: 100vh;
+        font-size: 20vh;
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 0 .1em #000, 0 0 .1em #000;
+        font: italic 800 22vmin/100vh "Fira Sans";
+        font-variant-numeric: tabular-nums;
+      }
+    </style>
+  </head>
+  <body>
+    <b></b>
+    <script>
+      var el = document.querySelector('b');
+      function up() {
+        var diff = (Date.parse('2014-12-02T02:00:00.000Z') - Date.now())/1e3|0;
+        if (diff < 0) {
+          el.innerHTML = 'It\'s ON!'
+        } else {
+          el.innerHTML = [
+            diff / (24*60*60) | 0,
+            (diff / (60*60) | 0) % 24,
+            (diff / 60 | 0) % 60,
+            diff % 60
+          ].map(function(n) {
+            return ('0'+Math.max(n,0)).substr(-2);
+          }).join(':');
+          setTimeout(up,50);
+        }
+      }
+      up();
+    </script>
+  </body>
+</html>
