@@ -47,8 +47,10 @@
           var minutes = (diff / 60 | 0) % 60;
           var seconds = diff % 60;
           el.innerHTML = days + (days > 1 ? ' DAYS' : ' DAY');
-          console.log(days, hours, minutes, seconds);
-          setTimeout(up,1000);
+          console.log([days, hours, minutes, seconds].map(function (t) {
+            return ('00' + t).substr(-2);
+          }).join(':'));
+          setTimeout(up,10000);
         }
       }
       up();
